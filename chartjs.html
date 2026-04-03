@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Chart Js</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+  font-family: Arial;
+  background: #ffffff;
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+canvas {
+  width: 400px !important;
+  height: 300px !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <canvas id="chartHrs"></canvas>
+  <canvas id="chartMeses"></canvas>
+</div>
+
+<script>
+new Chart(document.getElementById('chartHrs'), {
+  type: 'line',
+  data: {
+    labels: ['12:00','13:00','14:00','15:00','16:00','17:00'],
+    datasets: [
+      {
+        label: 'Temperatura',
+        data: [30,29,28,25,22,23],
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderWidth: 2,
+        fill: false
+      },
+      {
+        label: 'Umidade',
+        data: [80,82,80,85,85,83],
+        borderColor: 'rgb(54, 162, 235)',
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderWidth: 2,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          usePointStyle: false
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 20,
+        max: 90
+      }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('chartMeses'), {
+  type: 'bar',
+  data: {
+    labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho'],
+    datasets: [
+      {
+        label: 'Temperatura Média',
+        data: [22,24,27,23,20,18],
+        backgroundColor: 'rgb(255, 99, 132)'
+      },
+      {
+        label: 'Umidade Média',
+        data: [90,89,93,87,88,82],
+        backgroundColor: 'rgb(54, 162, 235)'
+      }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: {
+        position: 'top'
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
